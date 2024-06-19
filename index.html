@@ -1,130 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email Signature Generator</title>
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
-            color: #333;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
+            font-family: Poppins, Arial, sans-serif;
+            line-height: 1.5;
+            color: #4A4A4A;
+            display: flex;
+            justify-content: center;
             padding: 20px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
         }
         .signature-container {
-            margin-top: 20px;
-            padding: 20px;
             border: 1px solid #e0e0e0;
+            padding: 10px;
             border-radius: 5px;
+            display: flex;
         }
-        .signature-container img {
-            max-width: 100px;
-            margin-right: 10px;
-            vertical-align: middle;
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 15px;
+        }
+        .profile-pic {
+            border-radius: 50%;
+            width: 70px;
+        }
+        .school-logo {
+            width: 60px;
+            margin-top: 10px;
+        }
+        .school-locations {
+            font-size: 10px;
+            color: #0d56a2;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .vertical-line {
+            width: 1px;
+            background-color: #a6a6a6;
+            height: 130px;
+            margin-right: 15px;
         }
         .signature-details {
-            display: inline-block;
-            vertical-align: middle;
+            display: flex;
+            flex-direction: column;
         }
-        .signature-details a {
-            color: #333;
+        .name-linkedin {
+            display: flex;
+            align-items: center;
+        }
+        .name {
+            font-weight: bold;
+            color: #4A4A4A;
+            font-size: 14px;
+            margin-right: 5px;
+        }
+        .linkedin-logo {
+            width: 15px;
+            height: 15px;
+        }
+        .designation {
+            color: #a6a6a6;
+            font-size: 12px;
+            margin-top: 3px;
+        }
+        .contact-info {
+            margin-top: 5px;
+            display: flex;
+            flex-direction: column;
+            font-size: 10px;
+        }
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2px;
+        }
+        .contact-info img {
+            width: 16px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        .contact-info a {
+            color: #a6a6a6;
             text-decoration: none;
         }
-        .social-icons img {
-            width: 20px;
-            margin-right: 5px;
+        .social-icons {
+            margin-top: 10px;
+            display: flex;
         }
         .social-icons a {
             margin-right: 10px;
         }
+        .social-icons img {
+            width: 15px;
+        }
+        .buttons {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            font-size: 12px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Email Signature Generator</h1>
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" placeholder="Your Name">
+    <div>
+        <div class="form">
+            <label>Name: <input type="text" id="name" /></label><br>
+            <label>Designation: <input type="text" id="designation" /></label><br>
+            <label>Phone: <input type="text" id="phone" /></label><br>
+            <label>Email: <input type="email" id="email" /></label><br>
+            <label>LinkedIn URL: <input type="text" id="linkedin" /></label><br>
+            <label>Upload Profile Pic: <input type="file" id="profile-pic" /></label><br>
+            <label>Campus: 
+                <select id="campus">
+                    <option value="Core Office">Core Office</option>
+                    <option value="Noida">Noida</option>
+                    <option value="Gurgaon">Gurgaon</option>
+                    <option value="Faridabad">Faridabad</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Chennai">Chennai</option>
+                </select>
+            </label><br>
+            <button onclick="generateSignature()">Generate Signature</button>
         </div>
-        <div class="form-group">
-            <label for="designation">Designation:</label>
-            <input type="text" id="designation" placeholder="Your Designation">
+        <div id="signature-result" class="signature-container" style="margin-top: 20px;"></div>
+        <div class="buttons">
+            <button id="copy-btn">Copy to Clipboard</button>
+            <button id="copy-gmail-btn">Copy to Gmail Signature</button>
         </div>
-        <div class="form-group">
-            <label for="phone">Phone:</label>
-            <input type="text" id="phone" placeholder="Your Phone Number">
-        </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" placeholder="Your Email">
-        </div>
-        <div class="form-group">
-            <label for="linkedin">LinkedIn URL:</label>
-            <input type="url" id="linkedin" placeholder="Your LinkedIn URL">
-        </div>
-        <div class="form-group">
-            <label for="profile-pic">Upload Profile Pic:</label>
-            <input type="file" id="profile-pic">
-        </div>
-        <div class="form-group">
-            <label for="campus">Campus:</label>
-            <select id="campus">
-                <option value="Core Office">Core Office</option>
-                <option value="Noida">Noida</option>
-                <option value="Gurgaon">Gurgaon</option>
-                <option value="Faridabad">Faridabad</option>
-                <option value="Delhi">Delhi</option>
-                <option value="Chennai">Chennai</option>
-            </select>
-        </div>
-        <button id="generate-btn">Generate Signature</button>
-        <div id="signature-result" class="signature-container" style="display: none;">
-            <div class="left-column">
-                <img id="profile-pic-preview" src="#" alt="Profile Picture" style="display: none;">
-                <img src="school-logo.png" alt="School Logo" class="school-logo">
-                <div class="school-locations">
-                    <span id="noida" style="font-weight: normal;">Noida</span> | 
-                    <span id="gurgaon" style="font-weight: normal;">Gurgaon</span> | 
-                    <span id="faridabad" style="font-weight: normal;">Faridabad</span> | 
-                    <span id="delhi" style="font-weight: normal;">Delhi</span> | 
-                    <span id="chennai" style="font-weight: normal;">Chennai</span>
-                </div>
-            </div>
-            <div class="signature-details">
-                <strong id="signature-name"></strong>
-                <div id="signature-designation"></div>
-                <div id="signature-phone"></div>
-                <div id="signature-email"></div>
-                <div id="signature-website">
-                    <a href="https://shivnadarschool.edu.in/">https://shivnadarschool.edu.in/</a>
-                </div>
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/shivnadarschool"><img src="facebook-icon.png" alt="Facebook"></a>
-                    <a href="https://www.instagram.com/shivnadarschool"><img src="instagram-icon.png" alt="Instagram"></a>
-                    <a href="https://www.youtube.com/shivnadarschool"><img src="youtube-icon.png" alt="YouTube"></a>
-                    <a href="https://www.linkedin.com/school/shiv-nadar-school/"><img src="linkedin-icon.png" alt="LinkedIn"></a>
-                    <a href="https://www.twitter.com/shivnadarschool"><img src="twitter-icon.png" alt="Twitter"></a>
-                </div>
-            </div>
-        </div>
-        <button id="copy-btn" style="display: none;">Copy to Clipboard</button>
-        <button id="copy-gmail-btn" style="display: none;">Copy to Gmail Signature</button>
     </div>
     <script src="script.js"></script>
 </body>
