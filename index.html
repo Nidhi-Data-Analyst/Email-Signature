@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Signature Generator</title>
+    <style>
+        .signature-container {
+            font-family: Poppins, Arial, sans-serif;
+            line-height: 1.5;
+            color: #a6a6a6;
+            display: flex;
+            align-items: flex-start;
+            padding: 10px;
+            border-radius: 5px;
+            margin-left: 5px;
+        }
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 3px;
+        }
+        .profile-pic {
+            border-radius: 50%;
+            width: 70px; /* Increase the size of the photo */
+        }
+        .school-logo {
+            width: 60px; /* Decrease the size of the school logo */
+        }
+        .school-locations {
+            font-size: 6px;
+            color: #0d56a2;
+            text-align: center;
+            margin-top: auto; /* Align locations with social icons */
+        }
+        .vertical-line {
+            width: 1.5px;
+            background-color: #a6a6a6;
+            height: 130px;
+            margin-right: 5px;
+        }
+        .signature-details {
+            display: flex;
+            flex-direction: column;
+        }
+        .name-linkedin {
+            display: flex;
+            align-items: center;
+        }
+        .name-linkedin .name {
+            font-weight: bold;
+            color: #4A4A4A;
+            font-size: 14px;
+        }
+        .name-linkedin .vertical-line {
+            height: 20px;
+            width: 1.5px;
+            background-color: #999;
+            margin: 0 3px;
+        }
+        .linkedin-logo {
+            width: 15px;
+            height: 15px;
+        }
+        .designation {
+            color: #a6a6a6;
+            font-size: 12px;
+        }
+        .contact-info {
+            margin-top: 5px;
+            display: flex;
+            flex-direction: column;
+            font-size: 10px;
+        }
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2px;
+        }
+        .contact-info img {
+            width: 16px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        .contact-info a {
+            color: #a6a6a6;
+            font-size: 10px;
+            margin-left: 5px;
+            text-decoration: none; /* Remove underline */
+        }
+        .social-icons {
+            margin-top: 10px;
+            display: flex;
+        }
+        .social-icons a {
+            margin-right: 10px;
+        }
+        .social-icons img {
+            width: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name"><br>
+        <label for="designation">Designation:</label>
+        <input type="text" id="designation"><br>
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone"><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email"><br>
+        <label for="linkedin">LinkedIn URL:</label>
+        <input type="url" id="linkedin"><br>
+        <label for="profile-pic">Upload Profile Pic:</label>
+        <input type="file" id="profile-pic" accept="image/*"><br>
+        <label for="campus">Campus:</label>
+        <select id="campus">
+            <option value="Core Office">Core Office</option>
+            <option value="Noida">Noida</option>
+            <option value="Gurgaon">Gurgaon</option>
+            <option value="Faridabad">Faridabad</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Chennai">Chennai</option>
+        </select><br>
+        <button onclick="generateSignature()">Generate Signature</button>
+    </div>
+    <div id="signature-result"></div>
+    <button onclick="copyToClipboard()">Copy to Clipboard</button>
+    <button onclick="copyToGmail()">Copy to Gmail Signature</button>
+    <script src="script.js"></script>
+</body>
+</html>
