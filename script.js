@@ -94,3 +94,15 @@ function copyToClipboard() {
     window.getSelection().removeAllRanges(); // to deselect
     alert('Signature copied to clipboard. You can now paste it into your Gmail signature settings.');
 }
+
+function copyToGmail() {
+    const signatureHtml = document.getElementById('signature-result').innerHTML;
+    const tempTextarea = document.createElement('textarea');
+    tempTextarea.value = signatureHtml;
+    document.body.appendChild(tempTextarea);
+    tempTextarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempTextarea);
+    window.open('https://mail.google.com/mail/u/0/#settings/general', '_blank');
+    alert('Signature copied to clipboard! Now go to Gmail settings and paste it.');
+}
