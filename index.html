@@ -6,7 +6,7 @@
     <title>Email Signature Generator</title>
     <style>
         .signature-container {
-            font-family: Poppins, Arial, sans-serif;
+            font-family: 'Poppins', Poppins;
             line-height: 1.5;
             color: #a6a6a6;
             display: flex;
@@ -14,84 +14,101 @@
             border: 1px solid #e0e0e0;
             padding: 10px;
             border-radius: 5px;
-            margin-top: 20px;
+            margin-left: 5px;
         }
         .left-column {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-right: 10px;
+            margin-right: 15px;
         }
         .profile-pic {
             border-radius: 50%;
             width: 70px;
+            height: 70px;
+            object-fit: cover;
         }
         .school-logo {
-            width: 60px;
+            width: 100px;
+        }
+        .school-locations {
+            font-size: 10px;
+            color: #0d56a2;
+            text-align: center;
+            margin-top: 5px;
+        }
+        .vertical-line {
+            width: 1.5px;
+            background-color: #a6a6a6;
+            height: 100%;
+            margin-right: 15px;
         }
         .signature-details {
             display: flex;
             flex-direction: column;
         }
+        .name-linkedin {
+            display: flex;
+            align-items: center;
+        }
         .name {
             font-weight: bold;
             color: #4A4A4A;
-            font-size: 14px;
+            font-size: 16px;
+            margin-right: 8px;
+        }
+        .linkedin-logo {
+            width: 16px;
+            height: 16px;
         }
         .designation {
             color: #a6a6a6;
-            font-size: 12px;
+            font-size: 14px;
+            margin-top: 5px;
         }
         .contact-info {
-            margin-top: 5px;
+            margin-top: 10px;
             display: flex;
             flex-direction: column;
-            font-size: 10px;
+            font-size: 12px;
         }
         .contact-info div {
             display: flex;
             align-items: center;
-            margin-bottom: 2px;
+            margin-bottom: 5px;
         }
         .contact-info img {
             width: 16px;
             vertical-align: middle;
-            margin-right: 5px;
+            margin-right: 8px;
         }
         .contact-info a {
             color: #a6a6a6;
-            font-size: 10px;
             text-decoration: none;
         }
         .social-icons {
-            margin-top: 10px;
+            margin-top: 15px;
             display: flex;
         }
         .social-icons a {
             margin-right: 10px;
         }
         .social-icons img {
-            width: 15px;
+            width: 20px;
         }
     </style>
 </head>
 <body>
     <h1>Email Signature Generator</h1>
-    <form id="signature-form">
-        <label for="name">Name:</label>
-        <input type="text" id="name" required><br>
-        <label for="designation">Designation:</label>
-        <input type="text" id="designation" required><br>
-        <label for="phone">Phone:</label>
-        <input type="text" id="phone" required><br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" required><br>
-        <label for="linkedin">LinkedIn URL:</label>
-        <input type="url" id="linkedin"><br>
-        <label for="profile-pic">Upload Profile Pic:</label>
-        <input type="file" id="profile-pic" accept="image/*" required><br>
-        <label for="campus">Campus:</label>
-        <select id="campus" required>
+    <form>
+        <label>Name:</label><input type="text" id="name"><br>
+        <label>Designation:</label><input type="text" id="designation"><br>
+        <label>Phone:</label><input type="text" id="phone"><br>
+        <label>Email:</label><input type="text" id="email"><br>
+        <label>LinkedIn URL:</label><input type="text" id="linkedin"><br>
+        <label>Upload Profile Pic:</label><input type="file" id="profile-pic"><br>
+        <label>Campus:</label>
+        <select id="campus">
             <option value="Core Office">Core Office</option>
             <option value="Noida">Noida</option>
             <option value="Gurgaon">Gurgaon</option>
