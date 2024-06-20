@@ -12,9 +12,10 @@
             display: flex;
             align-items: flex-start;
             border: 1px solid #e0e0e0;
-            padding: 10px;
+            padding: 2px;
             border-radius: 5px;
             margin-left: 5px;
+            width: fit-content;
         }
         .left-column {
             display: flex;
@@ -31,7 +32,7 @@
             margin-top: 10px;
         }
         .school-locations {
-            font-size: 8px;
+            font-size: 5px;
             color: #0d56a2;
             text-align: center;
             margin-top: 3px;
@@ -105,13 +106,15 @@
             width: 15px;
         }
         .copy-button {
-            margin-top: 10px;
+            margin-top: 20px;
             padding: 10px 20px;
-            background-color: #0d56a2;
-            color: #ffffff;
+            background-color: #007bff;
+            color: white;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
+        }
+        .copy-button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -141,7 +144,7 @@
     <button onclick="generateSignature()">Generate Signature</button>
     <div id="signature-result"></div>
     <button class="copy-button" onclick="copyToClipboard()">Copy to Clipboard</button>
-    <button onclick="copyToGmail()">Copy to Gmail Signature</button>
+    <button class="copy-button" onclick="copyToSignatureRescue()">Copy HTML to Signature Rescue</button>
     <script src="script.js"></script>
 </body>
 </html>
